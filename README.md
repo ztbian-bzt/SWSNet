@@ -35,10 +35,10 @@ data
 The model will preprocess the dataset automatically, when first training or evaluating.
 
 ## Train
-'''
+```
 python train_network.py --epochs 100 --tb_save_dir logs --experiment_name swsnet --experiment_version 1 --train_batch_size 2 --n_bit_precision 16 --train_test_split 1 --devices 0
 python train_network.py --epochs 100 --tb_save_dir logs --experiment_name swsnet --experiment_version 1 --train_batch_size 2 --n_bit_precision 16 --train_test_split 2 --devices 0
-'''
+```
 
 ## Evaluate
 ```
