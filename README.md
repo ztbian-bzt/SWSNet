@@ -55,14 +55,19 @@ Infer batch raw data.(need to modify the checkpoint path and the path of raw dat
 
 ## Acknowledgements
 <details><summary>models</summary>
+    
 *[DilatedToothSegNet](https://github.com/LucasKre/dilated_tooth_seg_net)
     
 *[MeshSegNet](https://github.com/Tai-Hsien/MeshSegNet)
 
 *[DBGANet](https://github.com/zhijieL513/DBGANet)
+
 *[DGCNN](https://github.com/WangYueFt/dgcnn)
+
 *[PointNet++](https://github.com/yanx27/Pointnet_Pointnet2_pytorch)
+
 *[THISNet](https://github.com/li-pengcheng/THISNet)
+
 *[TSGCNet](https://github.com/ZhangLingMing1/TSGCNet)
 </details>
 
