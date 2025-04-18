@@ -78,27 +78,28 @@ def get_downsample_dilated_idx(k, downsample_rate, dilated_rate, pos, out=False)
         idx_fps = idx_fps + idx_base
         new_pos = pos.reshape(batch * point_num, -1)[idx_fps, :]
         cd = torch.cdist(pos, new_pos, p=2)
-
         idx_l = torch.topk(cd, k=k * dilated_rate, dim=-1, largest=False)[1]
         idx_l = idx_l + idx_base.unsqueeze(1) // downsample_rate
         idx_l = idx_origin.reshape(batch * downsample_point_num, -1)[idx_l].squeeze(3)
         if dilated_rate == 1:
-            return idx_l
-        idx_l = idx_l.reshape(batch * point_num, -1)
+            if out:
+                return idx_fps, idx_l
+            else:
+                return idx_l
+        idx_l = (idx_l + idx_base.unsqueeze(1)).reshape(batch * point_num, -1)
+        idx = fps(pos.reshape(batch * point_num, -1)[idx_l], k).long()
+        idx = batched_index_select(idx_l, 1, idx).reshape(batch, point_num, -1) - idx_base.unsqueeze(1)
     else:
         cd = torch.cdist(pos, pos, p=2)
         idx_l = torch.topk(cd, k=k * dilated_rate, largest=False)[1].reshape(batch * point_num, -1)
-    # start = time.time()
-    idx = fps(pos.reshape(batch * point_num, -1)[idx_l], k).long()
-    idx = batched_index_select(idx_l, 1, idx).reshape(batch, point_num, -1)
-    # print(time.time() - start)
+        idx = fps(pos.reshape(batch * point_num, -1)[idx_l], k).long()
+        idx = batched_index_select(idx_l, 1, idx).reshape(batch, point_num, -1)
     # for visualization
     if out:
         try:
             return idx_fps, idx_l.reshape(batch, point_num, -1), idx
         except NameError:
             return idx_l.reshape(batch, point_num, -1), idx
-
     return idx
 
 
