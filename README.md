@@ -5,10 +5,10 @@
 Create environmemt. 
 
 Make sure the **torch version matches cuda**.
-We use and recommend python 3.8,  torch 2.1.1, torchvision 0.16.1, torchaudio 0.9.0 and cuda 11.8.
+We use and recommend python 3.10,  torch 2.1.1, torchvision 0.16.1, torchaudio 2.1.1 and cuda 11.8.
 
 ```
-conda create --name swsnet python=3.8
+conda create --name swsnet python=3.10
 conda activate swsnet
 cd .../.../SWSNet-main
 sh setup.sh
