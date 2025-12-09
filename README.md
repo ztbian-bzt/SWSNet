@@ -1,4 +1,4 @@
-# SWSNet
+# SWSNet: Scale-wise Separable Network for 3D Tooth Segmentation
 ## Environment and Datasets
 - Environment
 
